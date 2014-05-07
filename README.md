@@ -1,4 +1,4 @@
-# Generator-Flog [![Build Status](https://secure.travis-ci.org/timbergus/generator-blog.png?branch=master)](https://travis-ci.org/timbergus/generator-blog)
+# Generator-Blog [![Build Status](https://secure.travis-ci.org/timbergus/generator-blog.png?branch=master)](https://travis-ci.org/timbergus/generator-blog)
 
 > [Yeoman](http://yeoman.io) generator
 
