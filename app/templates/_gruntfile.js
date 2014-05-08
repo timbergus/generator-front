@@ -225,11 +225,8 @@ module.exports = function (grunt) {
   });
  
   grunt.registerTask('server', ['connect:livereload', 'open', 'watch']);
-  grunt.registerTask('default', ['karma', 'document', 'concat:javascript', 'uglify', 'htmlmin', 'buildcss', 'copy']);
-  //grunt.registerTask('default', ['karma', 'document', 'concat:javascript', 'uglify', 'htmlmin', 'buildcss', 'copy', 'protractor']);
+  grunt.registerTask('default', ['karma', 'document', 'concat:javascript', 'uglify', 'htmlmin', 'buildcss', 'copy', 'protractor']);
   grunt.registerTask('buildcss',  ['sass', 'concat:css', 'clean', 'cssc', 'cssmin']);
-  grunt.registerTask('karma', ['karma']);
-  grunt.registerTask('protractor', ['protractor']);
   grunt.registerTask('test', ['karma', 'protractor']);
   grunt.registerTask('document', ['yuidoc', 'docco']);
 };

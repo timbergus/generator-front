@@ -1,11 +1,12 @@
 'use strict';
+
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 
 
-var BlogGenerator = yeoman.generators.Base.extend({
+var FrontGenerator = yeoman.generators.Base.extend({
   init: function () {
     this.pkg = require('../package.json');
 
@@ -28,12 +29,14 @@ var BlogGenerator = yeoman.generators.Base.extend({
     var prompts = [{
       type: 'input',
       name: 'appName',
-      message: 'How do you want to call your application?'
+      message: 'How do you want to call your application?',
+      default: 'My Cool App'
     },
     {
       type: 'input',
       name: 'appDescription',
-      message: 'What does your application do?'
+      message: 'What does your application do?',
+      default: 'Cool things!'
     },
     {
       type: 'input',
@@ -61,13 +64,17 @@ var BlogGenerator = yeoman.generators.Base.extend({
 
     this.copy('README.md', 'README.md');
 
-    this.copy('index.html', 'index.html');
-    this.copy('content.html', 'partials/content.html');
+    this.template('_index.html', 'index.html');
+    this.template('_content.html', 'partials/content.html');
+
+    this.copy('image_a.jpg', 'images/image_a.jpg');
+    this.copy('image_b.jpg', 'images/image_b.jpg');
+    this.copy('image_c.jpg', 'images/image_c.jpg');
 
     this.template('_application.js', 'js/application.js');
     this.template('_contentController.js', 'js/contentController.js');
     this.template('_contentController.spec.js', 'spec/contentController.spec.js');
-    this.template('_m2m.spec.js', 'spec/e2e.spec.js');
+    this.template('_e2e.spec.js', 'spec/e2e.spec.js');
 
     this.copy('karma.config.js', 'karma.config.js');
     this.copy('protractor.config.js', 'protractor.config.js');
@@ -78,4 +85,4 @@ var BlogGenerator = yeoman.generators.Base.extend({
   }
 });
 
-module.exports = BlogGenerator;
+module.exports = FrontGenerator;

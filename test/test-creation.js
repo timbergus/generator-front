@@ -19,12 +19,30 @@ describe('front generator', function () {
 
   it('creates expected files', function (done) {
     var expected = [
-      // add files you expect to exist here.
-      '../../.travis.yml'
+      '../../.travis.yml',
+      '../../package.json',
+      '../../README.md',
+      '../../app/templates/_application.js',
+      '../../app/templates/_bower.json',
+      '../../app/templates/_content.html',
+      '../../app/templates/_contentController.js',
+      '../../app/templates/_contentController.spec.js',
+      '../../app/templates/_gruntfile.js',
+      '../../app/templates/_index.html',
+      '../../app/templates/_e2e.spec.js',
+      '../../app/templates/_package.json',
+      '../../app/templates/image_a.jpg',
+      '../../app/templates/image_b.jpg',
+      '../../app/templates/image_c.jpg',
+      '../../app/templates/karma.config.js',
+      '../../app/templates/protractor.config.js',
+      '../../app/templates/README.md'
     ];
 
     helpers.mockPrompt(this.app, {
-      'blogName': true
+      'appName'        : true,
+      'appDescription' : true,
+      'appVersion'     : true
     });
     this.app.options['skip-install'] = true;
     this.app.run({}, function () {

@@ -6,4 +6,12 @@ app.controller('ContentController', ['$scope', function ($scope) {
         description : '<%= appDescription %>',
         versino     : '<%= appVersion %>'
     };
+
+    $scope.alerts = [
+    	{ type: 'success', msg: 'Wellcome to your first and amazing web application!' }
+  	];
+
+  	$scope.closeAlert = function(index) {
+    	$scope.alerts.splice(index, 1);
+  	};
 }]);

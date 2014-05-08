@@ -1,5 +1,7 @@
-// An example configuration file.
+// Protractor configuration
+
 exports.config = {
+
     // The address of a running selenium server.
     seleniumAddress: 'http://localhost:4444/wd/hub',
 
@@ -8,9 +10,8 @@ exports.config = {
         'browserName': 'chrome'
     },
 
-    // Spec patterns are relative to the current working directly when
-    // protractor is called.
-    specs: ['./spec/e2e/m2m.spec.js'],
+    // Spec patterns are relative to the current working directly when protractor is called.
+    specs: ['./spec/e2e.spec.js'],
 
     // Options to be passed to Jasmine-node.
     jasmineNodeOpts: {
