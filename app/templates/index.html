@@ -1,8 +1,26 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="app">
   <head>
     <meta charset="UTF-8">
     <title>Prueba</title>
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+  <script src="bower_components/angular-translate/angular-translate.js"></script>
+  <script src="bower_components/angular-ui-date/ui-date.js"></script>
+  <script src="bower_components/d3/d3.js"></script>
+  <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/ng-csv/build/ng-csv.min.js"></script>
+  <script src="bower_components/underscore/underscore.js"></script>
+
+    <script src="js/application.js"></script>
+    <script src="js/ContentController.js"></script>
   </head>
   <body>
     <h1>This is my amazing app</h1>
@@ -13,5 +31,6 @@
       <li>Accusantium, hic laudantium cumque optio ab at libero ipsam alias commodi dolorem delectus aut eius officia excepturi aperiam asperiores nulla blanditiis eveniet deserunt nisi. Quidem, reprehenderit cum dolore eos quo.</li>
       <li>Eius, molestias magnam officia voluptatum adipisci voluptas quia et nam! Illo, beatae, ipsum vero ad sequi minima aut fugit? Aspernatur, recusandae pariatur tempora incidunt unde in illum cupiditate! Vero, laboriosam.</li>
     </ul>
+    <div ng-view=""></div>
   </body>
 </html>

@@ -1,15 +1,37 @@
 {
-  "name": "test",
+  "name": "<%= _.slugify(appName) %>",
+  "description": "<%= appDescription %>",
+  "version": "<%= appVersion %>",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
   "devDependencies": {
-    "grunt"                 : "*",
-    "bower"                 : "*",
-    "grunt-contrib-connect" : "*",
-    "grunt-contrib-watch"   : "*",
-    "grunt-open"            : "*",
-    "matchdep"              : "*",
-    "connect-livereload"    : "*",
-    "moment"                : "*"
+    "grunt"                   : "*",
+    "bower"                   : "*",
+    "grunt-contrib-cssmin"    : "*",
+    "grunt-contrib-sass"      : "*",
+    "grunt-contrib-uglify"    : "*",
+    "grunt-contrib-watch"     : "*",
+    "grunt-cssc"              : "*",
+    "grunt-htmlhint"          : "*",
+    "grunt-contrib-htmlmin"   : "*",
+    "grunt-contrib-concat"    : "*",
+    "grunt-contrib-copy"      : "*",
+    "matchdep"                : "*",
+    "grunt-docco"             : "*",
+    "grunt-contrib-yuidoc"    : "*",
+    "grunt-karma"             : "~0.6.2",
+    "grunt-protractor-runner" : "*",
+    "grunt-jslint"            : "*",
+    "grunt-contrib-clean"     : "*",
+    "connect-livereload"      : "*",
+    "grunt-contrib-connect"   : "*",
+    "grunt-open"              : "*",
+    "moment"                  : "*",
+    "karma"                   : "~0.10",
+    "karma-junit-reporter"    : "~0.1"
   },
   "engines": {
     "node": ">=0.8.0"

@@ -1,0 +1,24 @@
+{
+	"name": "M2M",
+	"version": "1.0.0",
+	"private": true,
+	"main": "",
+	"ignore": [
+	],
+	"dependencies": {
+		"angular": "latest",
+		"angular-route": "latest",
+		"angular-mocks": "latest",
+		"angular-animate": "latest",
+		"angular-sanitize": "latest",
+		"angular-translate": "latest",
+		"angular-translate-loader-static-files": "latest",
+		"underscore": "latest",
+		"d3": "latest",
+		"ng-csv": "latest",
+		"angular-ui-date": "latest",
+		"angular-bootstrap": "latest"
+	},
+	"devDependencies": {
+	}
+}
