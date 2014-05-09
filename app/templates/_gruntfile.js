@@ -23,22 +23,22 @@ module.exports = function (grunt) {
         files: [
           'index.html'
         ],
-        tasks: ['build']
+        tasks: ['htmlhint']
       },
       html: {
         files: ['index.html', 'partials/*.html'],
-        tasks: ['htmlmin']
+        tasks: ['htmlhint']
       },
 
       js: {
         files: ['js/*'],
-        tasks: ['jslint', 'concat:javascript', 'uglify']
-      },
+        tasks: ['jslint']
+      }/*,
 
       css: {
         files: ['scss/*.scss'],
         tasks: ['buildcss']
-      }
+      }*/
     },
 
     connect: {
@@ -277,7 +277,7 @@ module.exports = function (grunt) {
   });
  
   grunt.registerTask('server'           , ['connect:livereload', 'open', 'watch']);
-  grunt.registerTask('test'             , ['karma', 'protractor_webdriver', 'protractor']);
+  grunt.registerTask('test'             , ['htmlhint', 'karma', 'protractor_webdriver', 'protractor']);
   grunt.registerTask('documentation'    , ['yuidoc', 'docco']);
   
   grunt.registerTask('default'          , ['copy:task_d',
