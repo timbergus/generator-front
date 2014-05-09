@@ -72,8 +72,8 @@ var FrontGenerator = yeoman.generators.Base.extend({
     this.copy('image_c.jpg', 'images/image_c.jpg');
 
     this.template('_application.js', 'js/application.js');
-    this.template('_contentController.js', 'js/contentController.js');
-    this.template('_contentController.spec.js', 'spec/contentController.spec.js');
+    this.template('_ContentController.js', 'js/ContentController.js');
+    this.template('_ContentController.spec.js', 'spec/ContentController.spec.js');
     this.template('_e2e.spec.js', 'spec/e2e.spec.js');
 
     this.copy('karma.config.js', 'karma.config.js');

@@ -40,6 +40,7 @@ module.exports = function (grunt) {
         tasks: ['buildcss']
       }
     },
+
     connect: {
       options: {
         port: 9000,
@@ -57,13 +58,12 @@ module.exports = function (grunt) {
         }
       }
     },
+
     open: {
       server: {
         path: 'http://localhost:<%%= connect.options.port %>'
       }
     },
-
-
 
     karma: {
       unit: {
@@ -128,7 +128,7 @@ module.exports = function (grunt) {
     concat: {
       javascript: {
         files: {
-          'dist/js/application.min.js': ['js/application.js', 'js/contentController.js'],
+          'dist/js/application.min.js': ['js/application.js', 'js/ContentController.js'],
           'dist/js/libraries.min.js'  : ['bower_components/underscore/underscore.js',
                                          'bower_components/d3/d3.js',
                                          'bower_components/angular/angular.js',
@@ -145,10 +145,8 @@ module.exports = function (grunt) {
       },
       css: {
         files: {
-          'dist/css/style.css': ['production/css/custom.css',
-                                 'production/css/default.css',
-                                 'production/css/login.css',
-                                 'production/css/style-metronic.css']
+          'dist/css/style.css': ['dist/css/bootstrap.css',
+                                 'dist/css/font-awesome.css']
         }
       }
     },
@@ -174,13 +172,18 @@ module.exports = function (grunt) {
       }
     },
 
+    less: {
+      build: {
+        files: {
+          'dist/css/bootstrap.css': 'bower_components/bootstrap/less/bootstrap.less'
+        }
+      }
+    },
+
     sass: {
       build: {
         files: {
-          'production/css/custom.css'         : 'scss/custom.scss',
-          'production/css/default.css'        : 'scss/default.scss',
-          'production/css/login.css'          : 'scss/login.scss',
-          'production/css/style-metronic.css' : 'scss/style-metronic.scss'
+          'dist/css/font-awesome.css': 'bower_components/font-awesome/scss/font-awesome.scss'
         }
       }
     },
@@ -209,24 +212,61 @@ module.exports = function (grunt) {
 
     copy: {
       main: {
-        src: ['images/**', 'translations/**'],
-        dest: 'dist/'
+        files: [
+          {
+            src: ['images/**', 'translations/**'],
+            dest: 'dist/'
+          },
+          {
+            cwd: 'bower_components/bootstrap/fonts/',
+            src: ['**'],
+            dest: 'dist/fonts/'
+          },
+          {
+            cwd: 'bower_components/font-awesome/fonts/',
+            src: ['**'],
+            dest: 'dist/fonts/'
+          }
+        ]
       },
     },
 
     clean: {
       build: {
-        src: ['production/css/custom.css', 
-              'production/css/default.css',
-              'production/css/login.css',
-              'production/css/style-metronic.css']
+        src: ['dist/css/bootstrap.css', 
+              'dist/css/font-awesome.css']
+      }
+    },
+
+    protractor_webdriver: {
+      your_target: {
+        options: {
+          command: 'webdriver-manager start'
+        },
+      },
+    },
+
+    htmlhint: {
+      html1: {
+        options: {
+          'tag-pair': true
+        },
+        src: ['*.html']
+      },
+      html2: {
+        options: {
+          'tag-pair': true
+        },
+        src: ['partials/*.html']
       }
     }
   });
  
-  grunt.registerTask('server', ['connect:livereload', 'open', 'watch']);
-  grunt.registerTask('default', ['karma', 'document', 'concat:javascript', 'uglify', 'htmlmin', 'buildcss', 'copy', 'protractor']);
-  grunt.registerTask('buildcss',  ['sass', 'concat:css', 'clean', 'cssc', 'cssmin']);
-  grunt.registerTask('test', ['karma', 'protractor']);
-  grunt.registerTask('document', ['yuidoc', 'docco']);
+  grunt.registerTask('server'           , ['connect:livereload', 'open', 'watch']);
+  grunt.registerTask('default'          , ['build_html', 'build_javascript', 'build_css', 'copy']);
+  grunt.registerTask('test'             , ['karma', 'protractor_webdriver', 'protractor']);
+  grunt.registerTask('documentation'    , ['yuidoc', 'docco']);
+  grunt.registerTask('build_html'       , ['htmlhint', 'htmlmin']);
+  grunt.registerTask('build_javascript' , ['concat:javascript', 'uglify']);
+  grunt.registerTask('build_css'        , ['sass', 'less', 'concat:css', 'cssc', 'cssmin', 'clean']);
 };

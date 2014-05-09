@@ -24,8 +24,8 @@ module.exports = function(config) {
             'bower_components/ng-csv/build/ng-csv.min.js',
             'bower_components/angular-sanitize/angular-sanitize.js',
             'js/application.js',
-            'js/contentController.js',
-            'spec/contentController.spec.js'
+            'js/ContentController.js',
+            'spec/ContentController.spec.js'
         ],
 
         // list of files to exclude
