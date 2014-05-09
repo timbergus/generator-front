@@ -33,7 +33,8 @@
     "connect-livereload"         : "*",
     "grunt-contrib-connect"      : "*",
     "grunt-open"                 : "*",
-    "moment"                     : "*"
+    "moment"                     : "*",
+    "grunt-usemin"               : "*"
   },
   "engines": {
     "node": ">=0.8.0"

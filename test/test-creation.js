@@ -36,7 +36,7 @@ describe('front generator', function () {
       '../../app/templates/image_c.jpg',
       '../../app/templates/karma.config.js',
       '../../app/templates/protractor.config.js',
-      '../../app/templates/README.md'
+      '../../app/templates/_README.md'
     ];
 
     helpers.mockPrompt(this.app, {

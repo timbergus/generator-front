@@ -62,7 +62,7 @@ var FrontGenerator = yeoman.generators.Base.extend({
     this.mkdir('partials');     // Partials views for the application.
     this.mkdir('translations'); // Files with the strings translated.
 
-    this.copy('README.md', 'README.md');
+    this.template('_README.md', 'README.md');
 
     this.template('_index.html', 'index.html');
     this.template('_content.html', 'partials/content.html');

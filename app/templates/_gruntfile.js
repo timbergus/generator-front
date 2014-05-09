@@ -9,7 +9,7 @@ var mountFolder = function (connect, dir) {
 };
  
 module.exports = function (grunt) {
-  // load all grunt tasks
+
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
  
   grunt.initConfig({
@@ -125,7 +125,7 @@ module.exports = function (grunt) {
       }
     },
 
-    concat: {
+    /*concat: {
       javascript: {
         files: {
           'dist/js/application.min.js': ['js/application.js', 'js/ContentController.js'],
@@ -158,7 +158,7 @@ module.exports = function (grunt) {
           'dist/js/libraries.min.js'  : ['dist/js/libraries.min.js']
         }
       }
-    },
+    },*/
 
     htmlmin: {
       dist: {
@@ -166,8 +166,7 @@ module.exports = function (grunt) {
           removeComments: true
         },
         files: {
-          'dist/index.html'           : 'index.html',
-          'dist/partials/advise.html' : 'partials/content.html'
+          'dist/partials/content.html' : 'partials/content.html'
         }
       }
     },
@@ -199,7 +198,7 @@ module.exports = function (grunt) {
           consolidateMediaQueries    : false
         },
         files: {
-          'dist/css/style.css': ['dist/css/style.css']
+          'dist/css/style.css' : ['dist/css/style.css']
         }
       }
     },
@@ -211,30 +210,34 @@ module.exports = function (grunt) {
     },
 
     copy: {
-      main: {
-        files: [
-          {
-            src: ['images/**', 'translations/**'],
-            dest: 'dist/'
-          },
-          {
-            cwd: 'bower_components/bootstrap/fonts/',
-            src: ['**'],
-            dest: 'dist/fonts/'
-          },
-          {
-            cwd: 'bower_components/font-awesome/fonts/',
-            src: ['**'],
-            dest: 'dist/fonts/'
-          }
-        ]
+      task_a: {
+        src  : ['images/**', 'translations/**'],
+        dest : 'dist/'
       },
+      task_b: {
+        expand: true,
+        cwd: 'bower_components/bootstrap/fonts/',
+        dest: 'dist/fonts/',
+        src: ['*']
+      },
+      task_c: {
+        expand: true,
+        cwd: 'bower_components/font-awesome/fonts/',
+        dest: 'dist/fonts/',
+        src: ['*']
+      },
+      task_d: {
+        src  : 'index.html',
+        dest : 'dist/index.html'
+      }
     },
 
     clean: {
       build: {
         src: ['dist/css/bootstrap.css', 
-              'dist/css/font-awesome.css']
+              'dist/css/font-awesome.css',
+              '.sass-cache',
+              '.tmp']
       }
     },
 
@@ -259,13 +262,37 @@ module.exports = function (grunt) {
         },
         src: ['partials/*.html']
       }
+    },
+
+    useminPrepare: {
+      html: 'index.html',
+      options: {
+        dest: 'dist'
+      }
+    },
+
+    usemin: {
+      html: ['dist/index.html']
     }
   });
  
   grunt.registerTask('server'           , ['connect:livereload', 'open', 'watch']);
-  grunt.registerTask('default'          , ['build_html', 'build_javascript', 'build_css', 'copy']);
   grunt.registerTask('test'             , ['karma', 'protractor_webdriver', 'protractor']);
   grunt.registerTask('documentation'    , ['yuidoc', 'docco']);
+  
+  grunt.registerTask('default'          , ['copy:task_d',
+                                           'useminPrepare',
+                                           'concat',
+                                           'uglify',
+                                           'cssc',
+                                           'cssmin',
+                                           'usemin',
+                                           'clean',
+                                           'build_html',
+                                           'copy:task_a',
+                                           'copy:task_b',
+                                           'copy:task_c']);
+
   grunt.registerTask('build_html'       , ['htmlhint', 'htmlmin']);
   grunt.registerTask('build_javascript' , ['concat:javascript', 'uglify']);
   grunt.registerTask('build_css'        , ['sass', 'less', 'concat:css', 'cssc', 'cssmin', 'clean']);
