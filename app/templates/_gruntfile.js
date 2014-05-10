@@ -11,7 +11,9 @@ var mountFolder = function (connect, dir) {
 module.exports = function (grunt) {
 
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
- 
+
+  require('time-grunt')(grunt);
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     watch: {
@@ -33,12 +35,12 @@ module.exports = function (grunt) {
       js: {
         files: ['js/*'],
         tasks: ['jslint']
-      }/*,
+      },
 
       css: {
         files: ['scss/*.scss'],
-        tasks: ['buildcss']
-      }*/
+        tasks: ['build_css']
+      }
     },
 
     connect: {
@@ -125,41 +127,6 @@ module.exports = function (grunt) {
       }
     },
 
-    /*concat: {
-      javascript: {
-        files: {
-          'dist/js/application.min.js': ['js/application.js', 'js/ContentController.js'],
-          'dist/js/libraries.min.js'  : ['bower_components/underscore/underscore.js',
-                                         'bower_components/d3/d3.js',
-                                         'bower_components/angular/angular.js',
-                                         'bower_components/ng-csv/build/ng-csv.js',
-                                         'bower_components/angular-route/angular-route.js',
-                                         'bower_components/angular-translate/angular-translate.js',
-                                         'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
-                                         'bower_components/angular-bootstrap/ui-bootstrap.js',
-                                         'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-                                         'bower_components/angular-sanitize/angular-sanitize.js',
-                                         'bower_components/angular-ui-date/src/date.js',
-                                         'bower_components/angular-animate/angular-animate.js']
-        }
-      },
-      css: {
-        files: {
-          'dist/css/style.css': ['dist/css/bootstrap.css',
-                                 'dist/css/font-awesome.css']
-        }
-      }
-    },
-
-    uglify: {
-      build: {
-        files: {
-          'dist/js/application.min.js': ['dist/js/application.min.js'],
-          'dist/js/libraries.min.js'  : ['dist/js/libraries.min.js']
-        }
-      }
-    },*/
-
     htmlmin: {
       dist: {
         options: {
@@ -174,16 +141,24 @@ module.exports = function (grunt) {
     less: {
       build: {
         files: {
-          'dist/css/bootstrap.css': 'bower_components/bootstrap/less/bootstrap.less'
+          'scss/css/bootstrap.css': 'bower_components/bootstrap/less/bootstrap.less'
         }
       }
     },
 
     sass: {
       build: {
-        files: {
-          'dist/css/font-awesome.css': 'bower_components/font-awesome/scss/font-awesome.scss'
-        }
+        files: [{
+          src: ['bower_components/font-awesome/scss/font-awesome.scss'],
+          dest: 'scss/css/font-awesome.css'
+        },
+        {
+          expand: true,
+          cwd: 'scss',
+          src: ['**/*.scss'],
+          dest: 'scss/css',
+          ext: '.css'
+        }]
       }
     },
 
@@ -229,14 +204,24 @@ module.exports = function (grunt) {
       task_d: {
         src  : 'index.html',
         dest : 'dist/index.html'
+      },
+      task_e: {
+        expand: true,
+        cwd: 'bower_components/bootstrap/fonts/',
+        dest: 'scss/fonts/',
+        src: ['*']
+      },
+      task_f: {
+        expand: true,
+        cwd: 'bower_components/font-awesome/fonts/',
+        dest: 'scss/fonts/',
+        src: ['*']
       }
     },
 
     clean: {
       build: {
-        src: ['dist/css/bootstrap.css', 
-              'dist/css/font-awesome.css',
-              '.sass-cache',
+        src: ['.sass-cache',
               '.tmp']
       }
     },
@@ -273,10 +258,25 @@ module.exports = function (grunt) {
 
     usemin: {
       html: ['dist/index.html']
+    },
+
+    csslint: {
+      strict: {
+        options: {
+          import: 2
+        },
+        src: ['scss/*.css', '!scss/bootstrap.css', '!scss/bootstrap.css']
+      },
+      lax: {
+        options: {
+          import: false
+        },
+        src: ['scss/*.css', '!scss/bootstrap.css', '!scss/bootstrap.css']
+      }
     }
   });
  
-  grunt.registerTask('server'           , ['connect:livereload', 'open', 'watch']);
+  grunt.registerTask('server'           , ['build_css', 'connect:livereload', 'open', 'watch']);
   grunt.registerTask('test'             , ['htmlhint', 'karma', 'protractor_webdriver', 'protractor']);
   grunt.registerTask('documentation'    , ['yuidoc', 'docco']);
   
@@ -295,5 +295,5 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build_html'       , ['htmlhint', 'htmlmin']);
   grunt.registerTask('build_javascript' , ['concat:javascript', 'uglify']);
-  grunt.registerTask('build_css'        , ['sass', 'less', 'concat:css', 'cssc', 'cssmin', 'clean']);
+  grunt.registerTask('build_css'        , ['sass', 'less', 'copy:task_e', 'copy:task_f', 'csslint']);
 };

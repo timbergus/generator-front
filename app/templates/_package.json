@@ -34,7 +34,9 @@
     "grunt-contrib-connect"      : "*",
     "grunt-open"                 : "*",
     "moment"                     : "*",
-    "grunt-usemin"               : "*"
+    "grunt-usemin"               : "*",
+    "grunt-contrib-csslint"      : "*",
+    "time-grunt"                 : "*"
   },
   "engines": {
     "node": ">=0.8.0"

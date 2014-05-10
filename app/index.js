@@ -67,9 +67,15 @@ var FrontGenerator = yeoman.generators.Base.extend({
     this.template('_index.html', 'index.html');
     this.template('_content.html', 'partials/content.html');
 
+    this.copy('es.json', 'translations/es.json');
+    this.copy('en.json', 'translations/en.json');
+
     this.copy('image_a.jpg', 'images/image_a.jpg');
     this.copy('image_b.jpg', 'images/image_b.jpg');
     this.copy('image_c.jpg', 'images/image_c.jpg');
+
+    this.copy('custom.scss', 'scss/custom.scss');
+    this.copy('_colors.scss', 'scss/_colors.scss');
 
     this.template('_application.js', 'js/application.js');
     this.template('_ContentController.js', 'js/ContentController.js');
