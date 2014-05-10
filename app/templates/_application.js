@@ -28,7 +28,7 @@ var app = angular.module('app', ['ngRoute', 'pascalprecht.translate', 'ui.bootst
     // * preferredLanguage: the language that is going to be loaded.
 
     $translateProvider.useStaticFilesLoader({
-        prefix: '../translations/',
+        prefix: './translations/',
         suffix: '.json'
     })
         .fallbackLanguage(getLocale())
