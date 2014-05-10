@@ -1,6 +1,6 @@
 # Generator-Front [![Build Status](https://secure.travis-ci.org/timbergus/generator-front.png?branch=master)](https://travis-ci.org/timbergus/generator-front) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-> [Yeoman](http://yeoman.io) generator
+> Front end generator for [Yeoman](http://yeoman.io) with [Angular](https://angularjs.org/) and other cool stuff :)
 
 ## Getting Started
 

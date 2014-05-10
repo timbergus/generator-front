@@ -3,9 +3,9 @@
 
 app.controller('ContentController', ['$scope', function ($scope) {
     $scope.content = {
-        title       : 'Mi Estupenda Aplicación',
-        description : 'Hace que me sienta feliz de lo bien que funciona.',
-        version     : '0.1.0'
+        title       : '<%= appName %>',
+        description : '<%= appDescription %>',
+        version     : '<%= appVersion %>'
     };
 
     $scope.alerts = [{
