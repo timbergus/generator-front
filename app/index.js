@@ -55,30 +55,24 @@ var FrontGenerator = yeoman.generators.Base.extend({
 
   app: function () {
 
-    this.mkdir('js');           // JavaScript files.
-    this.mkdir('scss');         // Style sheets in Sass.
-    this.mkdir('spec');         // Test files.
-    this.mkdir('images');       // Images.
-    this.mkdir('partials');     // Partials views for the application.
-    this.mkdir('translations'); // Files with the strings translated.
-
     this.template('_README.md', 'README.md');
 
-    this.template('_index.html', 'index.html');
-    this.template('_content.html', 'partials/content.html');
+    this.template('_index.html', 'app/index.html');
+    this.template('_content.html', 'app/partials/content.html');
 
-    this.copy('es.json', 'translations/es.json');
-    this.copy('en.json', 'translations/en.json');
+    this.copy('es.json', 'app/translations/es.json');
+    this.copy('en.json', 'app/translations/en.json');
 
-    this.copy('image_a.jpg', 'images/image_a.jpg');
-    this.copy('image_b.jpg', 'images/image_b.jpg');
-    this.copy('image_c.jpg', 'images/image_c.jpg');
+    this.copy('image_a.jpg', 'app/images/image_a.jpg');
+    this.copy('image_b.jpg', 'app/images/image_b.jpg');
+    this.copy('image_c.jpg', 'app/images/image_c.jpg');
 
-    this.copy('custom.scss', 'scss/custom.scss');
-    this.copy('_colors.scss', 'scss/_colors.scss');
+    this.copy('custom.scss', 'app/scss/custom.scss');
+    this.copy('_colors.scss', 'app/scss/_colors.scss');
 
-    this.template('_application.js', 'js/application.js');
-    this.template('_ContentController.js', 'js/ContentController.js');
+    this.template('_application.js', 'app/js/application.js');
+    this.template('_ContentController.js', 'app/js/controllers/ContentController.js');
+
     this.template('_ContentController.spec.js', 'spec/ContentController.spec.js');
     this.template('_e2e.spec.js', 'spec/e2e.spec.js');
 

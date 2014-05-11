@@ -21,24 +21,22 @@ module.exports = function (grunt) {
         nospawn: true,
         livereload: LIVERELOAD_PORT
       },
+
       livereload: {
         files: [
-          'index.html'
+          'app/index.html',
+          'app/partials/*.html'
         ],
-        tasks: ['htmlhint']
-      },
-      html: {
-        files: ['index.html', 'partials/*.html'],
         tasks: ['htmlhint']
       },
 
       js: {
-        files: ['js/*'],
+        files: ['app/js/*'],
         tasks: ['jslint']
       },
 
       css: {
-        files: ['scss/*.scss'],
+        files: ['app/scss/*.scss'],
         tasks: ['build_css']
       }
     },
@@ -63,7 +61,7 @@ module.exports = function (grunt) {
 
     open: {
       server: {
-        path: 'http://localhost:<%%= connect.options.port %>'
+        path: 'http://localhost:<%%= connect.options.port %>/app'
       }
     },
 
@@ -75,13 +73,13 @@ module.exports = function (grunt) {
     
     protractor: {
       options: {
-        configFile: "node_modules/protractor/referenceConf.js",
+        configFile: 'node_modules/protractor/referenceConf.js',
         keepAlive: true,
         noColor: false
       },
       your_target: {
         options: {
-          configFile: "protractor.config.js"
+          configFile: 'protractor.config.js'
         }
       }
     },
@@ -91,9 +89,9 @@ module.exports = function (grunt) {
         'name': '<%= appName %>',
         'description': '<%= appDescription %>',
         'version': '<%= appVersion %>',
-        'url': 'http://10.110.2.36/m2m',
+        'url': 'http://localhost:9000/app',
         options: {
-          paths: [ "./js" ],
+          paths: [ 'app/js/', 'app/js/controllers/' ],
           outdir: 'docs/technical'
         }
       }
@@ -101,7 +99,7 @@ module.exports = function (grunt) {
 
     docco: {
       debug: {
-        src: ['./js/*.js'],
+        src: ['app/js/*.js', 'app/js/controllers/*.js'],
         options: {
           output: 'docs/descriptive'
         }
@@ -111,7 +109,7 @@ module.exports = function (grunt) {
     jslint: {
       server: {
         src: [
-          'js/*.js'
+          'app/js/*.js'
         ],
         directives: {
           node: true,
@@ -133,7 +131,7 @@ module.exports = function (grunt) {
           removeComments: true
         },
         files: {
-          'dist/partials/content.html' : 'partials/content.html'
+          'dist/partials/content.html' : 'app/partials/content.html'
         }
       }
     },
@@ -141,7 +139,7 @@ module.exports = function (grunt) {
     less: {
       build: {
         files: {
-          'scss/css/bootstrap.css': 'bower_components/bootstrap/less/bootstrap.less'
+          'app/scss/css/bootstrap.css': 'bower_components/bootstrap/less/bootstrap.less'
         }
       }
     },
@@ -149,14 +147,13 @@ module.exports = function (grunt) {
     sass: {
       build: {
         files: [{
-          src: ['bower_components/font-awesome/scss/font-awesome.scss'],
-          dest: 'scss/css/font-awesome.css'
+          'app/scss/css/font-awesome.css': 'bower_components/font-awesome/scss/font-awesome.scss'
         },
         {
           expand: true,
-          cwd: 'scss',
+          cwd: 'app/scss',
           src: ['**/*.scss'],
-          dest: 'scss/css',
+          dest: 'app/scss/css',
           ext: '.css'
         }]
       }
@@ -186,7 +183,7 @@ module.exports = function (grunt) {
 
     copy: {
       task_a: {
-        src  : ['images/**', 'translations/**'],
+        src  : ['app/images/**', 'app/translations/**'],
         dest : 'dist/'
       },
       task_b: {
@@ -202,19 +199,19 @@ module.exports = function (grunt) {
         src: ['*']
       },
       task_d: {
-        src  : 'index.html',
+        src  : 'app/index.html',
         dest : 'dist/index.html'
       },
       task_e: {
         expand: true,
         cwd: 'bower_components/bootstrap/fonts/',
-        dest: 'scss/fonts/',
+        dest: 'app/scss/fonts/',
         src: ['*']
       },
       task_f: {
         expand: true,
         cwd: 'bower_components/font-awesome/fonts/',
-        dest: 'scss/fonts/',
+        dest: 'app/scss/fonts/',
         src: ['*']
       }
     },
@@ -239,18 +236,18 @@ module.exports = function (grunt) {
         options: {
           'tag-pair': true
         },
-        src: ['*.html']
+        src: ['app/*.html']
       },
       html2: {
         options: {
           'tag-pair': true
         },
-        src: ['partials/*.html']
+        src: ['app/partials/*.html']
       }
     },
 
     useminPrepare: {
-      html: 'index.html',
+      html: 'app/index.html',
       options: {
         dest: 'dist'
       }
@@ -265,13 +262,13 @@ module.exports = function (grunt) {
         options: {
           import: 2
         },
-        src: ['scss/*.css', '!scss/bootstrap.css', '!scss/bootstrap.css']
+        src: ['app/scss/*.css', '!app/scss/bootstrap.css', '!app/scss/bootstrap.css']
       },
       lax: {
         options: {
           import: false
         },
-        src: ['scss/*.css', '!scss/bootstrap.css', '!scss/bootstrap.css']
+        src: ['app/scss/*.css', '!app/scss/bootstrap.css', '!app/scss/bootstrap.css']
       }
     }
   });

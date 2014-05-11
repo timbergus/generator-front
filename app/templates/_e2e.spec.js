@@ -2,7 +2,7 @@ describe('E2E: login page', function() {
     var ptor;
 
     beforeEach(function() {
-        browser.get('http://localhost:9000');
+        browser.get('http://localhost:9000/app');
         ptor = protractor.getInstance();
     });
 

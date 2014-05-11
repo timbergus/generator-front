@@ -23,8 +23,8 @@ module.exports = function(config) {
             'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
             'bower_components/ng-csv/build/ng-csv.min.js',
             'bower_components/angular-sanitize/angular-sanitize.js',
-            'js/application.js',
-            'js/ContentController.js',
+            'app/js/application.js',
+            'app/js/controllers/ContentController.js',
             'spec/ContentController.spec.js'
         ],
 
