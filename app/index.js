@@ -5,7 +5,6 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 
-
 var FrontGenerator = yeoman.generators.Base.extend({
   init: function () {
     this.pkg = require('../package.json');
@@ -73,15 +72,15 @@ var FrontGenerator = yeoman.generators.Base.extend({
     this.template('_application.js', 'app/js/application.js');
     this.template('_ContentController.js', 'app/js/controllers/ContentController.js');
 
-    this.template('_ContentController.spec.js', 'spec/ContentController.spec.js');
     this.template('_e2e.spec.js', 'spec/e2e.spec.js');
+    this.template('_ContentController.spec.js', 'spec/ContentController.spec.js');
 
     this.copy('karma.config.js', 'karma.config.js');
     this.copy('protractor.config.js', 'protractor.config.js');
 
+    this.template('_bower.json', 'bower.json');
     this.template('_gruntfile.js', 'gruntfile.js');
     this.template('_package.json', 'package.json');
-    this.template('_bower.json', 'bower.json');
   }
 });
 

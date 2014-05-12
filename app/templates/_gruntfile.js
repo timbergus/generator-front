@@ -182,21 +182,29 @@ module.exports = function (grunt) {
     },
 
     copy: {
-      task_a: {
-        src  : ['app/images/**', 'app/translations/**'],
-        dest : 'dist/'
+      task_a1: {
+        expand: true,
+        cwd: 'app/images/',
+        src  : ['**'],
+        dest : 'dist/images/'
+      },
+      task_a2: {
+        expand: true,
+        cwd: 'app/translations/',
+        src  : ['**'],
+        dest : 'dist/translations/'
       },
       task_b: {
         expand: true,
         cwd: 'bower_components/bootstrap/fonts/',
-        dest: 'dist/fonts/',
-        src: ['*']
+        src: ['**'],
+        dest: 'dist/fonts/'
       },
       task_c: {
         expand: true,
         cwd: 'bower_components/font-awesome/fonts/',
-        dest: 'dist/fonts/',
-        src: ['*']
+        src: ['**'],
+        dest: 'dist/fonts/'
       },
       task_d: {
         src  : 'app/index.html',
@@ -205,21 +213,20 @@ module.exports = function (grunt) {
       task_e: {
         expand: true,
         cwd: 'bower_components/bootstrap/fonts/',
-        dest: 'app/scss/fonts/',
-        src: ['*']
+        src: ['**'],
+        dest: 'app/scss/fonts/'
       },
       task_f: {
         expand: true,
         cwd: 'bower_components/font-awesome/fonts/',
-        dest: 'app/scss/fonts/',
-        src: ['*']
+        src: ['**'],
+        dest: 'app/scss/fonts/'
       }
     },
 
     clean: {
       build: {
-        src: ['.sass-cache',
-              '.tmp']
+        src: ['.sass-cache', '.tmp']
       }
     },
 
@@ -286,7 +293,8 @@ module.exports = function (grunt) {
                                            'usemin',
                                            'clean',
                                            'build_html',
-                                           'copy:task_a',
+                                           'copy:task_a1',
+                                           'copy:task_a2',
                                            'copy:task_b',
                                            'copy:task_c']);
 
