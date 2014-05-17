@@ -31,7 +31,7 @@ module.exports = function (grunt) {
       },
 
       js: {
-        files: ['app/js/*'],
+        files: ['app/js/*', 'app/js/controllers/*'],
         tasks: ['jslint']
       },
 
@@ -109,7 +109,8 @@ module.exports = function (grunt) {
     jslint: {
       server: {
         src: [
-          'app/js/*.js'
+          'app/js/*.js',
+          'app/js/controllers/*.js'
         ],
         directives: {
           node: true,
