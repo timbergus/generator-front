@@ -3,7 +3,7 @@
 
 'use strict';
 
-var app = angular.module('app', ['ngRoute', 'pascalprecht.translate', 'ui.bootstrap'], ['$routeProvider', '$translateProvider', '$locationProvider', function ($routeProvider, $translateProvider, $locationProvider) {
+var app = angular.module('app', ['ngRoute', 'pascalprecht.translate', 'ui.bootstrap', 'ui.calendar'], ['$routeProvider', '$translateProvider', '$locationProvider', function ($routeProvider, $translateProvider, $locationProvider) {
     $routeProvider.when('/home', {
         controller: 'ContentController',
         templateUrl: 'partials/content.html'
