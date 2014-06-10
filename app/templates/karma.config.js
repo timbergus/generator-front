@@ -21,7 +21,6 @@ module.exports = function(config) {
             'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
             'bower_components/angular-translate/angular-translate.js',
             'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
-            'bower_components/ng-csv/build/ng-csv.min.js',
             'bower_components/angular-sanitize/angular-sanitize.js',
             'app/js/application.js',
             'app/js/controllers/ContentController.js',
