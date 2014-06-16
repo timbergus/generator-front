@@ -25,13 +25,14 @@ module.exports = function (grunt) {
       livereload: {
         files: [
           'app/index.html',
-          'app/partials/*.html'
+          'app/partials/*.html',
+          'app/templates/*.html'
         ],
         tasks: ['htmlhint']
       },
 
       js: {
-        files: ['app/js/*', 'app/js/controllers/*'],
+        files: ['app/js/**'],
         tasks: ['jslint']
       },
 
@@ -99,7 +100,7 @@ module.exports = function (grunt) {
 
     docco: {
       debug: {
-        src: ['app/js/*.js', 'app/js/controllers/*.js'],
+        src: ['app/js/**.js'],
         options: {
           output: 'docs/descriptive'
         }
@@ -109,8 +110,7 @@ module.exports = function (grunt) {
     jslint: {
       server: {
         src: [
-          'app/js/*.js',
-          'app/js/controllers/*.js'
+          'app/js/**.js'
         ],
         directives: {
           node: true,
