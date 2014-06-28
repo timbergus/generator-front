@@ -36,7 +36,9 @@
     "moment"                     : "*",
     "grunt-usemin"               : "*",
     "grunt-contrib-csslint"      : "*",
-    "time-grunt"                 : "*"
+    "time-grunt"                 : "*",
+    "grunt-ngdocs"               : "*",
+    "grunt-jsdoc"                : "*"
   },
   "engines": {
     "node": ">=0.8.0"

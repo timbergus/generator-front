@@ -54,6 +54,8 @@ var util = require('util'),
         app: function () {
 
             this.mkdir('app/templates');
+            this.mkdir('app/js/services');
+            this.mkdir('app/js/directives');
 
             this.template('_README.md', 'README.md');
 

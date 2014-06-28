@@ -3,6 +3,29 @@
 
 'use strict';
 
+/**
+ * @ngdoc object
+ * @name app
+ * 
+ * @description
+ * This is the main module for our application.
+ * 
+ * @requires $routeProvider
+ * @requires $translateProvider
+ * @requires $locationProvider
+ */
+
+/**
+ * @ngdoc method
+ * @name app:getLocale
+ * @methodOf app
+ * 
+ * @returns {string} The browser language in a two letters string.
+ * 
+ * @description
+ * This function gets the browser language.
+ */
+
 var app = angular.module('app', ['ngRoute', 'pascalprecht.translate', 'ui.bootstrap', 'ui.calendar'], ['$routeProvider', '$translateProvider', '$locationProvider', function ($routeProvider, $translateProvider, $locationProvider) {
     $routeProvider.when('/home', {
         controller: 'ContentController',
@@ -10,12 +33,6 @@ var app = angular.module('app', ['ngRoute', 'pascalprecht.translate', 'ui.bootst
     }).otherwise({
         redirectTo: '/home'
     });
-
-    /**
-     * This function gets the browser language.
-     * @method getLocale
-     * @return {string} The browser language in a two letters string.
-     */
 
     var getLocale = function () {
         var nav = window.navigator;
