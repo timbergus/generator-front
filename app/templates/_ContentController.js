@@ -26,16 +26,6 @@
  * | `title`       | {@type string} | title of the application       |
  * | `description` | {@type string} | description of the application |
  * | `version`     | {@type string} | version of the application     |
- * 
- * # Default
- * 
- * ```
- * {
- *     title: '',
- *     description: '',
- *     version: ''
- * }
- * ```
  */
  
 /**
@@ -50,17 +40,6 @@
  * |----------|----------------|----------------------|
  * | `type`   | {@type string} | alert type           |
  * | `msg`    | {@type string} | message of the alert |
- *
- * # Default
- * 
- * ```
- * [
- *     {
- *         type: 'success',
- *         msg: 'Wellcome to your first and amazing web application!'
- *     }
- * ]
- * ```
  */
 
 /**

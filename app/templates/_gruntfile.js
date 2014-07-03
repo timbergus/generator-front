@@ -32,7 +32,7 @@ module.exports = function (grunt) {
       },
 
       js: {
-        files: ['app/js/*.js', 'app/js/controllers/*.js', 'app/js/directives/*.js', 'app/js/services/*.js'],
+        files: ['app/js/*.js', 'app/js/controllers/*.js', 'app/js/directives/*.js', 'app/js/services/*.js', 'app/js/filters/*.js'],
         tasks: ['jslint']
       },
 
@@ -92,7 +92,7 @@ module.exports = function (grunt) {
         html5Mode: false,
         bestMatch: true
       },
-      all: ['app/js/*.js', 'app/js/controllers/*.js', 'app/js/directives/*.js', 'app/js/services/*.js']
+      all: ['app/js/*.js', 'app/js/controllers/*.js', 'app/js/directives/*.js', 'app/js/services/*.js', 'app/js/filters/*.js']
     },
 
     /*yuidoc: {
@@ -119,7 +119,7 @@ module.exports = function (grunt) {
 
     docco: {
       debug: {
-        src: ['app/js/*.js', 'app/js/controllers/*.js', 'app/js/directives/*.js', 'app/js/services/*.js'],
+        src: ['app/js/*.js', 'app/js/controllers/*.js', 'app/js/directives/*.js', 'app/js/services/*.js', 'app/js/filters/*.js'],
         options: {
           output: 'docs/docco'
         }
@@ -128,7 +128,7 @@ module.exports = function (grunt) {
 
     jslint: {
       server: {
-        src: ['app/js/*.js', 'app/js/controllers/*.js', 'app/js/directives/*.js', 'app/js/services/*.js'],
+        src: ['app/js/*.js', 'app/js/controllers/*.js', 'app/js/directives/*.js', 'app/js/services/*.js', 'app/js/filters/*.js'],
         directives: {
           node: true,
           todo: true,

@@ -5,6 +5,7 @@
 	"dependencies": {
 		"angular"                               : "*",
 		"angular-route"                         : "*",
+		"angular-ui-router"                     : "*",
 		"angular-mocks"                         : "*",
 		"angular-animate"                       : "*",
 		"angular-sanitize"                      : "*",
