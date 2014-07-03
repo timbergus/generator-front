@@ -24,7 +24,6 @@
     "grunt-contrib-concat"       : "*",
     "matchdep"                   : "*",
     "grunt-docco"                : "*",
-    "grunt-contrib-yuidoc"       : "*",
     "karma"                      : "~0.10",
     "grunt-karma"                : "~0.6.2",
     "karma-junit-reporter"       : "~0.1",
@@ -37,8 +36,7 @@
     "grunt-usemin"               : "*",
     "grunt-contrib-csslint"      : "*",
     "time-grunt"                 : "*",
-    "grunt-ngdocs"               : "*",
-    "grunt-jsdoc"                : "*"
+    "grunt-ngdocs"               : "*"
   },
   "engines": {
     "node": ">=0.8.0"

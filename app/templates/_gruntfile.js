@@ -45,7 +45,6 @@ module.exports = function (grunt) {
     connect: {
       options: {
         port: 9000,
-        // change this to '0.0.0.0' to access the server from outside
         hostname: 'localhost'
       },
       livereload: {
@@ -94,28 +93,6 @@ module.exports = function (grunt) {
       },
       all: ['app/js/*.js', 'app/js/controllers/*.js', 'app/js/directives/*.js', 'app/js/services/*.js', 'app/js/filters/*.js']
     },
-
-    /*yuidoc: {
-      compile: {
-        'name': '<%= appName %>',
-        'description': '<%= appDescription %>',
-        'version': '<%= appVersion %>',
-        'url': 'http://localhost:<%%= connect.options.port %>/app',
-        options: {
-          paths: ['app/js/', 'app/js/controllers/', 'app/js/directives/', 'app/js/services/'],
-          outdir: 'docs/yuidoc'
-        }
-      }
-    },
-
-    jsdoc : {
-      dist : {
-        src: ['app/js/*.js', 'app/js/controllers/*.js', 'app/js/directives/*.js', 'app/js/services/*.js'], 
-        options: {
-            destination: 'docs/jsdoc'
-        }
-      }
-    },*/
 
     docco: {
       debug: {
@@ -301,7 +278,6 @@ module.exports = function (grunt) {
   grunt.registerTask('server'           , ['build_css', 'connect:livereload', 'open', 'watch']);
   grunt.registerTask('test'             , ['htmlhint', 'karma', 'protractor_webdriver', 'protractor']);
   grunt.registerTask('documentation'    , ['ngdocs', 'docco']);
-  //grunt.registerTask('documentation'  , ['ngdocs', 'docco', 'yuidoc', 'jsdoc']);
   
   grunt.registerTask('default'          , ['copy:task_d',
                                            'useminPrepare',
