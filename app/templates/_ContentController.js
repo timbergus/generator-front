@@ -71,7 +71,7 @@ app.controller('ContentController', ['$scope', '$log', function ($scope, $log) {
 
     $scope.alerts = [{
         type: 'success',
-        msg: 'Wellcome to your first and amazing web application!'
+        msg: 'Welcome to your first and amazing web application!'
     }];
 
     $scope.closeAlert = function (index) {
