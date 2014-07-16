@@ -201,9 +201,21 @@ module.exports = function (grunt) {
         src: ['**'],
         dest: 'dist/fonts/'
       },
-      task_d: {
+      task_d1: {
         src  : 'app/index.html',
         dest : 'dist/index.html'
+      },
+      task_d2: {
+        expand: true,
+        cwd: 'app/partials/',
+        src  : ['**'],
+        dest : 'dist/partials/'
+      },
+      task_d3: {
+        expand: true,
+        cwd: 'app/templates/',
+        src  : ['**'],
+        dest : 'dist/templates/'
       },
       task_e: {
         expand: true,
@@ -279,7 +291,9 @@ module.exports = function (grunt) {
   grunt.registerTask('test'             , ['htmlhint', 'karma', 'protractor_webdriver', 'protractor']);
   grunt.registerTask('documentation'    , ['ngdocs', 'docco']);
   
-  grunt.registerTask('default'          , ['copy:task_d',
+  grunt.registerTask('default'          , ['copy:task_d1',
+                                           'copy:task_d2',
+                                           'copy:task_d3',
                                            'useminPrepare',
                                            'concat',
                                            'uglify',
