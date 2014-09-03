@@ -1,10 +1,10 @@
 {
   "name": "generator-front",
-  "version": "0.0.0",
-  "description": "Yeoman generator",
+  "version": "0.0.1",
+  "description": "Yeoman generator for a web application with Angular.js",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "timbergus/generator-blog",
+  "repository": "https://github.com/timbergus/generator-front.git",
   "author": {
     "name": "Gustavo Muñoz",
     "email": "timbergus@gmail.com",
@@ -20,7 +20,12 @@
     "app"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "angular",
+    "grunt",
+    "bower",
+    "spa",
+    "bootstrap"
   ],
   "dependencies": {
     "yeoman-generator": "~0.16.0",
