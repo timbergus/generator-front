@@ -4,7 +4,6 @@
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 [![Stories in Ready](https://badge.waffle.io/timbergus/generator-front.svg?label=ready&title=Ready)](http://waffle.io/timbergus/generator-front)
 [![Dependency Status](https://david-dm.org/timbergus/generator-front.svg)](https://david-dm.org/timbergus/generator-front)
-[![devDependency Status](https://david-dm.org/timbergus/generator-front/dev-status.svg)](https://david-dm.org/timbergus/generator-front#info=devDependencies)
 
 > Front end generator for [Yeoman](http://yeoman.io) with [Angular](https://angularjs.org/) and other cool stuff :)
 
