@@ -287,7 +287,7 @@ module.exports = function (grunt) {
     }
   });
  
-  grunt.registerTask('server'           , ['build_css', 'connect:livereload', 'open', 'watch']);
+  grunt.registerTask('serve'            , ['build_css', 'connect:livereload', 'open', 'watch']);
   grunt.registerTask('test'             , ['htmlhint', 'karma', 'protractor_webdriver', 'protractor']);
   grunt.registerTask('documentation'    , ['ngdocs', 'docco']);
   
