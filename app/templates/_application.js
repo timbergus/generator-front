@@ -15,7 +15,7 @@
  * @requires $translateProvider
  * @requires $locationProvider
  */
- 
+
 /**
  * @ngdoc method
  * @name app:getLocale
@@ -28,7 +28,7 @@
  */
 
 var app = angular.module('app', ['pascalprecht.translate', 'ui.bootstrap', 'ui.router'], ['$urlRouterProvider', '$stateProvider', '$translateProvider', '$locationProvider', function ($urlRouterProvider, $stateProvider, $translateProvider, $locationProvider) {
-    
+
     $stateProvider
         .state('home', {
             url: '/home',
@@ -42,7 +42,7 @@ var app = angular.module('app', ['pascalprecht.translate', 'ui.bootstrap', 'ui.r
         var nav = window.navigator;
         return (nav.language || nav.browserLanguage || nav.systemLanguage || nav.userLanguage || '').split('-')[0];
     };
-    
+
     // $translateProvider is configured to read the corresponding JSON file for the language selected by the user and two options are set:
     // 
     // * fallbackLanguage: the language that is going to loaded if no other language is specified.

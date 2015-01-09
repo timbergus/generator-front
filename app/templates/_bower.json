@@ -12,10 +12,10 @@
 		"angular-translate-loader-static-files" : "*",
 		"underscore"                            : "*",
 		"d3"                                    : "*",
-		"bootstrap"                             : "*",
-		"font-awesome"                          : "*",
 		"angular-bootstrap"                     : "*",
 		"angular-ui-date"                       : "*",
-		"angular-ui-calendar"                   : "*"
+		"angular-ui-calendar"                   : "*",
+		"font-awesome"                          : "*",
+		"bootstrap-sass-official"               : "*"
 	}
 }

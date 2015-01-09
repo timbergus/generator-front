@@ -27,7 +27,7 @@
  * | `description` | {@type string} | description of the application |
  * | `version`     | {@type string} | version of the application     |
  */
- 
+
 /**
  * @ngdoc property
  * @name app.controller:ContentController#alerts
@@ -54,7 +54,7 @@
  * @description
  * This method close an alert using its index.
  */
- 
+
 app.controller('ContentController', ['$scope', '$log', function ($scope, $log) {
 
     $log.log('The controller has been loaded!');
@@ -62,7 +62,7 @@ app.controller('ContentController', ['$scope', '$log', function ($scope, $log) {
     $log.warn('The controller has been loaded!');
     $log.error('The controller has been loaded!');
     $log.debug('The controller has been loaded!');
-    
+
     $scope.content = {
         title       : '<%= appName %>',
         description : '<%= appDescription %>',

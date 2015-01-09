@@ -73,7 +73,7 @@ module.exports = function (grunt) {
     
     protractor: {
       options: {
-        configFile: 'node_modules/protractor/referenceConf.js',
+        configFile: 'node_modules/protractor/docs/referenceConf.js',
         keepAlive: true,
         noColor: false
       },
@@ -131,14 +131,6 @@ module.exports = function (grunt) {
       }
     },
 
-    less: {
-      build: {
-        files: {
-          'app/scss/css/bootstrap.css': 'bower_components/bootstrap/less/bootstrap.less'
-        }
-      }
-    },
-
     sass: {
       build: {
         files: [{
@@ -177,41 +169,41 @@ module.exports = function (grunt) {
     },
 
     copy: {
-      task_a1: {
+      images: {
         expand: true,
         cwd: 'app/images/',
         src  : ['**'],
         dest : 'dist/images/'
       },
-      task_a2: {
+      locations: {
         expand: true,
         cwd: 'app/translations/',
         src  : ['**'],
         dest : 'dist/translations/'
       },
-      task_b: {
+      bootstrap_fonts: {
         expand: true,
-        cwd: 'bower_components/bootstrap/fonts/',
+        cwd: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap',
         src: ['**'],
         dest: 'dist/fonts/'
       },
-      task_c: {
+      fontawesome_fonts: {
         expand: true,
         cwd: 'bower_components/font-awesome/fonts/',
         src: ['**'],
         dest: 'dist/fonts/'
       },
-      task_d1: {
+      index: {
         src  : 'app/index.html',
         dest : 'dist/index.html'
       },
-      task_d2: {
+      partials: {
         expand: true,
         cwd: 'app/partials/',
         src  : ['**'],
         dest : 'dist/partials/'
       },
-      task_d3: {
+      templates: {
         expand: true,
         cwd: 'app/templates/',
         src  : ['**'],
@@ -289,11 +281,11 @@ module.exports = function (grunt) {
  
   grunt.registerTask('serve'            , ['build_css', 'connect:livereload', 'open', 'watch']);
   grunt.registerTask('test'             , ['htmlhint', 'karma', 'protractor_webdriver', 'protractor']);
-  grunt.registerTask('documentation'    , ['ngdocs', 'docco']);
+  grunt.registerTask('docs'             , ['ngdocs', 'docco']);
   
-  grunt.registerTask('default'          , ['copy:task_d1',
-                                           'copy:task_d2',
-                                           'copy:task_d3',
+  grunt.registerTask('default'          , ['copy:index',
+                                           'copy:partials',
+                                           'copy:templates',
                                            'useminPrepare',
                                            'concat',
                                            'uglify',
@@ -302,12 +294,12 @@ module.exports = function (grunt) {
                                            'usemin',
                                            'clean',
                                            'build_html',
-                                           'copy:task_a1',
-                                           'copy:task_a2',
-                                           'copy:task_b',
-                                           'copy:task_c']);
+                                           'copy:images',
+                                           'copy:locations',
+                                           'copy:bootstrap_fonts',
+                                           'copy:fontawesome_fonts']);
 
   grunt.registerTask('build_html'       , ['htmlhint', 'htmlmin']);
   grunt.registerTask('build_javascript' , ['concat:javascript', 'uglify']);
-  grunt.registerTask('build_css'        , ['sass', 'less', 'copy:task_e', 'copy:task_f', 'csslint']);
+  grunt.registerTask('build_css'        , ['sass', 'copy:task_e', 'copy:task_f', 'csslint']);
 };

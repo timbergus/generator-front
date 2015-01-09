@@ -1,13 +1,6 @@
-describe('E2E: login page', function() {
-    var ptor;
-
-    beforeEach(function() {
-        browser.get('http://localhost:9000/app');
-        ptor = protractor.getInstance();
-    });
-
-    it('when accessing, the home page should be load.', function() {
-        var ele = by.id('home_contents');
-        expect(ptor.isElementPresent(ele)).toBe(true);
+describe('Demo home page', function() {
+    it('should be loaded.', function() {
+        browser.get('http://localhost:9000/app/#/home');
+        expect(element(by.id('home_contents')).isPresent()).toBe(true);
     });
 });
